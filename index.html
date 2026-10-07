@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#04070d">
+<meta name="description" content="SentinelMesh — AI Security Operations, Investigation & Governed Response">
+<title>SentinelMesh — AI Security Operations Platform</title>
+<style>
+:root{
+  --bg:#04070d;--bg2:#07101c;--panel:rgba(10,17,29,.72);--panel2:rgba(10,20,34,.92);
+  --line:rgba(150,190,230,.14);--line2:rgba(83,226,255,.28);
+  --text:#f2f7ff;--muted:#8ea4bd;--faint:#64788f;
+  --cyan:#48e6ff;--blue:#6d8cff;--green:#57f0a7;--amber:#ffc85e;--red:#ff5878;--violet:#ae78ff;
+  --shadow:0 28px 90px rgba(0,0,0,.44);
+  --r:20px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--bg)}
+body{margin:0;color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:
+radial-gradient(1000px 600px at 15% -10%,rgba(72,230,255,.08),transparent 60%),
+radial-gradient(800px 640px at 90% 10%,rgba(109,140,255,.10),transparent 60%),
+linear-gradient(180deg,#04070d,#050914 45%,#04070d);overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background-image:
+linear-gradient(rgba(255,255,255,.022) 1px,transparent 1px),
+linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);background-size:54px 54px;mask-image:linear-gradient(#000,transparent 90%)}
+button,a{font:inherit}.wrap{width:min(1200px,92vw);margin:auto}.muted{color:var(--muted)}.cyan{color:var(--cyan)}.green{color:var(--green)}.amber{color:var(--amber)}.red{color:var(--red)}.violet{color:var(--violet)}
+.card{background:linear-gradient(180deg,rgba(13,23,38,.82),rgba(7,13,23,.76));border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);backdrop-filter:blur(18px)}
+.nav{position:fixed;inset:0 0 auto;z-index:100;background:rgba(4,7,13,.64);backdrop-filter:blur(22px);border-bottom:1px solid rgba(255,255,255,.06)}
+.navin{height:72px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.brand{display:flex;align-items:center;gap:11px;font-weight:900;letter-spacing:.08em;font-size:13px}.logo{width:34px;height:34px;border-radius:11px;position:relative;border:1px solid rgba(72,230,255,.5);background:radial-gradient(circle at 35% 25%,rgba(72,230,255,.26),transparent 46%),#08111d;box-shadow:inset 0 0 24px rgba(72,230,255,.08),0 0 28px rgba(72,230,255,.08)}
+.logo:before{content:"";position:absolute;left:8px;top:8px;width:16px;height:16px;border:1px solid var(--cyan);transform:rotate(45deg);border-radius:4px}.logo:after{content:"";position:absolute;left:14px;top:14px;width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 12px var(--green)}
+.navlinks{display:flex;gap:22px;color:var(--muted);font-size:12px}.navlinks a:hover{color:#fff}.navright{display:flex;align-items:center;gap:10px}.livechip{display:flex;gap:7px;align-items:center;color:var(--green);font-size:10px;letter-spacing:.12em;text-transform:uppercase}.pulse{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 14px var(--green);animation:pulse 1.5s infinite}@keyframes pulse{50%{opacity:.35;transform:scale(.7)}}
+.btn{border:1px solid rgba(150,190,230,.19);background:rgba(13,23,38,.8);color:#fff;padding:12px 16px;border-radius:12px;font-weight:800;font-size:12px;cursor:pointer;transition:.22s;box-shadow:0 8px 30px rgba(0,0,0,.18)}
+.btn:hover{transform:translateY(-2px);border-color:rgba(72,230,255,.5);box-shadow:0 12px 36px rgba(72,230,255,.08)}.btn.primary{background:linear-gradient(135deg,#148fa7,#405cd6);border-color:rgba(120,235,255,.55)}.btn.ghost{background:transparent}
+.hero{min-height:920px;padding:115px 0 75px;position:relative;display:grid;align-items:center;overflow:hidden}.hero3d{position:absolute;inset:0;perspective:1000px;pointer-events:none}.floor{position:absolute;width:1300px;height:850px;left:50%;bottom:-540px;transform:translateX(-50%) rotateX(66deg);background-image:linear-gradient(rgba(72,230,255,.09) 1px,transparent 1px),linear-gradient(90deg,rgba(72,230,255,.09) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(circle,#000 18%,transparent 68%);animation:drift 13s linear infinite}@keyframes drift{to{background-position:60px 60px}}
+.core{position:absolute;left:50%;top:47%;width:560px;height:560px;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,rgba(72,230,255,.18),rgba(109,140,255,.08) 28%,transparent 65%);filter:blur(.2px);animation:breathe 5s ease-in-out infinite}@keyframes breathe{50%{transform:translate(-50%,-50%) scale(1.08);opacity:.75}}
+.ring{position:absolute;left:50%;top:47%;border:1px solid rgba(72,230,255,.21);border-radius:50%;transform-style:preserve-3d;box-shadow:0 0 70px rgba(72,230,255,.045)}
+.r1{width:430px;height:430px;animation:r1 20s linear infinite}.r2{width:520px;height:320px;border-color:rgba(109,140,255,.18);animation:r2 26s linear infinite}.r3{width:330px;height:520px;border-style:dashed;border-color:rgba(87,240,167,.15);animation:r3 31s linear infinite}@keyframes r1{from{transform:translate(-50%,-50%) rotateX(67deg) rotateZ(0)}to{transform:translate(-50%,-50%) rotateX(67deg) rotateZ(360deg)}}@keyframes r2{from{transform:translate(-50%,-50%) rotateY(67deg) rotateZ(0)}to{transform:translate(-50%,-50%) rotateY(67deg) rotateZ(-360deg)}}@keyframes r3{from{transform:translate(-50%,-50%) rotateX(20deg) rotateY(66deg) rotateZ(0)}to{transform:translate(-50%,-50%) rotateX(20deg) rotateY(66deg) rotateZ(360deg)}}
+.heroContent{position:relative;z-index:5;text-align:center;max-width:980px;margin:auto}.eyebrow{display:inline-flex;align-items:center;gap:9px;border:1px solid rgba(72,230,255,.22);background:rgba(9,18,30,.65);padding:9px 13px;border-radius:999px;color:#b7f4ff;font-size:10px;letter-spacing:.17em;text-transform:uppercase}
+.hero h1{font-size:clamp(62px,9.5vw,118px);line-height:.84;margin:27px 0 24px;letter-spacing:-.075em;background:linear-gradient(120deg,#fff 12%,#8bf1ff 38%,#869aff 68%,#fff 92%);-webkit-background-clip:text;color:transparent;text-shadow:0 0 55px rgba(72,230,255,.08)}
+.hero h1 span{display:block;font-size:.34em;letter-spacing:-.025em;margin-top:22px;color:#c8d7e8;background:linear-gradient(90deg,#9fb1c8,#fff,#92b5de);-webkit-background-clip:text;color:transparent}
+.hero p{max-width:790px;margin:0 auto;color:#a2b3c8;font-size:18px;line-height:1.75}.heroActions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:30px}
+.factbar{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:54px;text-align:left}.fact{padding:16px;border:1px solid var(--line);border-radius:16px;background:rgba(8,15,26,.68);backdrop-filter:blur(14px)}.fact b{display:block;font-size:24px}.fact small{display:block;color:var(--muted);font-size:10px;margin-top:5px;line-height:1.4}
+.disclaimer{margin-top:15px;color:#73879f;font-size:10px}.disclaimer strong{color:#9ab0c8}
+section{padding:105px 0}.head{display:flex;justify-content:space-between;gap:34px;align-items:end;margin-bottom:34px}.kicker{color:var(--cyan);font-size:10px;letter-spacing:.19em;text-transform:uppercase}.head h2{font-size:clamp(35px,5vw,61px);letter-spacing:-.05em;line-height:1;margin:11px 0 0}.head p{max-width:510px;color:var(--muted);line-height:1.75;font-size:14px}
+.demoShell{overflow:hidden;position:relative}.chrome{height:48px;display:flex;align-items:center;justify-content:space-between;padding:0 17px;border-bottom:1px solid var(--line);background:rgba(255,255,255,.018)}.traffic{display:flex;gap:7px}.traffic i{width:7px;height:7px;border-radius:50%;background:#36475b}.traffic i:first-child{background:var(--red)}.traffic i:nth-child(2){background:var(--amber)}.traffic i:nth-child(3){background:var(--green)}.chrometitle{font:10px ui-monospace,SFMono-Regular,Menlo,monospace;color:#8296ad}
+.soc{display:grid;grid-template-columns:240px 1fr 290px;min-height:670px}.leftpanel,.rightpanel{padding:17px}.leftpanel{border-right:1px solid var(--line)}.rightpanel{border-left:1px solid var(--line)}.label{font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:#6f839b;margin:4px 0 12px}.incident{border:1px solid rgba(150,190,230,.11);border-radius:12px;padding:12px;margin-bottom:8px;background:rgba(255,255,255,.015);cursor:pointer;transition:.2s}.incident:hover,.incident.active{border-color:rgba(72,230,255,.42);background:rgba(72,230,255,.045)}.incident b{font-size:11px}.incident small{display:block;color:var(--muted);font-size:9px;margin-top:5px}.badge{float:right;font-size:8px;padding:3px 6px;border-radius:6px}.badge.high{color:#ff879a;background:rgba(255,88,120,.12)}.badge.med{color:#ffd27e;background:rgba(255,200,94,.11)}
+.scene{position:relative;overflow:hidden;background:radial-gradient(circle at 50% 45%,rgba(72,230,255,.055),transparent 39%),rgba(2,6,12,.32)}#mesh{position:absolute;inset:0;width:100%;height:100%}.scenehud{position:absolute;inset:0;pointer-events:none}.sceneTitle{position:absolute;left:18px;top:17px}.sceneTitle b{display:block;font-size:13px}.sceneTitle span{font-size:9px;color:var(--muted)}.score{position:absolute;right:18px;top:15px;text-align:right}.score b{display:block;font-size:27px;color:var(--red)}.score small{font-size:8px;color:var(--muted);letter-spacing:.1em}.entity{position:absolute;width:90px;height:90px;border-radius:50%;display:grid;place-items:center;text-align:center;padding:12px;font-size:9px;font-weight:900;background:radial-gradient(circle at 32% 25%,rgba(255,255,255,.16),rgba(19,32,50,.94));border:1px solid rgba(105,180,220,.34);box-shadow:0 0 34px rgba(72,230,255,.10);animation:float 4s ease-in-out infinite}.entity:after{content:"";position:absolute;inset:-9px;border:1px solid rgba(72,230,255,.08);border-radius:50%;animation:ripple 2.8s ease-out infinite}@keyframes float{50%{transform:translateY(-7px)}}@keyframes ripple{to{transform:scale(1.28);opacity:0}}.e1{left:11%;top:25%}.e2{left:42%;top:12%;animation-delay:.4s}.e3{right:9%;top:29%;animation-delay:.9s}.e4{left:39%;top:47%;width:112px;height:112px;border-color:rgba(255,88,120,.55);box-shadow:0 0 48px rgba(255,88,120,.18)}.e5{left:14%;bottom:14%;animation-delay:1.3s}.e6{right:12%;bottom:14%;animation-delay:.7s}
+.feed{height:158px;overflow:hidden;font:10px/1.45 ui-monospace,SFMono-Regular,Menlo,monospace;color:#9cb1ca}.feed div{padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)}.feed em{font-style:normal;color:var(--cyan)}.agents{border:1px solid var(--line);border-radius:13px;padding:12px;margin-top:14px}.agent{display:flex;justify-content:space-between;gap:10px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.045);font-size:10px}.agent:last-child{border:0}.miniControls{display:flex;flex-wrap:wrap;gap:7px;margin-top:13px}.miniControls .btn{padding:9px 10px;font-size:10px}.progress{height:4px;margin-top:11px;background:#0d1724;border-radius:99px;overflow:hidden}.progress span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--cyan),var(--blue));transition:width .45s}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.cap{padding:25px;min-height:190px;position:relative;overflow:hidden}.cap:before{content:"";position:absolute;width:150px;height:150px;border-radius:50%;background:radial-gradient(circle,rgba(72,230,255,.06),transparent 67%);right:-40px;top:-50px}.cap .num{font:800 11px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--cyan);margin-bottom:28px}.cap h3{font-size:16px;margin:0 0 9px}.cap p{font-size:12px;color:var(--muted);line-height:1.75;margin:0}
+.repoFacts{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}.repoFact{padding:18px;text-align:left}.repoFact b{font-size:26px;display:block}.repoFact span{font-size:10px;color:var(--muted);line-height:1.45;display:block;margin-top:6px}
+.archboard{padding:24px;overflow:auto}.pipeline{display:flex;align-items:stretch;gap:8px;min-width:1000px}.svc{flex:1;min-width:118px;padding:16px 12px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.018);position:relative}.svc strong{font-size:11px}.svc span{display:block;color:var(--muted);font-size:9px;line-height:1.45;margin-top:8px}.arrow{display:grid;place-items:center;color:#4e718d;font-size:18px}
+.stores{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin-top:13px;min-width:1000px}.store{padding:11px;border:1px solid rgba(150,190,230,.1);border-radius:11px;background:rgba(6,12,20,.7);font-size:9px;color:#a9b8ca}.store b{display:block;color:#fff;margin-bottom:4px}
+.agentsGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.agentCard{padding:22px;min-height:230px}.agentCard .agentIcon{width:45px;height:45px;border-radius:14px;display:grid;place-items:center;margin-bottom:26px;border:1px solid rgba(72,230,255,.22);background:rgba(72,230,255,.05);font-weight:900;color:var(--cyan)}.agentCard h3{margin:0 0 9px}.agentCard p{color:var(--muted);font-size:12px;line-height:1.7}.agentCard small{display:inline-block;margin-top:14px;font:9px ui-monospace,SFMono-Regular,Menlo,monospace;color:#7f95ad}
+.mcpGrid{display:grid;grid-template-columns:1.05fr .95fr;gap:15px}.mcpViz{height:480px;position:relative;overflow:hidden}.hub{position:absolute;left:50%;top:50%;width:128px;height:128px;transform:translate(-50%,-50%);border-radius:50%;display:grid;place-items:center;text-align:center;background:radial-gradient(circle at 35% 28%,rgba(72,230,255,.2),rgba(12,28,48,.95));border:1px solid rgba(72,230,255,.42);box-shadow:0 0 65px rgba(72,230,255,.12)}.hub:before,.hub:after{content:"";position:absolute;inset:-30px;border-radius:50%;border:1px dashed rgba(72,230,255,.12);animation:r1 18s linear infinite}.hub:after{inset:-67px;border-color:rgba(109,140,255,.1);animation-direction:reverse}.tool{position:absolute;width:150px;padding:12px;border:1px solid var(--line);border-radius:12px;background:rgba(8,16,28,.9);font-size:10px}.tool b{display:block}.tool span{color:var(--muted);font-size:9px}.t1{left:7%;top:14%}.t2{right:7%;top:16%}.t3{left:8%;bottom:15%}.t4{right:8%;bottom:15%}.mcpCopy{padding:26px}.mcpCopy h3{font-size:28px;margin:0 0 13px}.mcpCopy p{color:var(--muted);line-height:1.75;font-size:13px}.log{margin-top:20px;border:1px solid var(--line);border-radius:13px;overflow:hidden;background:#050b13}.logline{padding:11px 13px;border-bottom:1px solid rgba(255,255,255,.04);font:10px ui-monospace,SFMono-Regular,Menlo,monospace;color:#9fb2c8}.logline:last-child{border:0}.logline b{color:#dce8f5}
+.approval{display:grid;grid-template-columns:1.05fr .95fr;gap:15px}.approvalCard,.resultCard{padding:28px;min-height:390px}.risknum{font-size:82px;font-weight:900;letter-spacing:-.07em;color:var(--red);line-height:.95;margin-top:25px}.actionRow{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}.resultCard{display:grid;place-items:center;text-align:center}.shield{width:100px;height:100px;border-radius:28px;display:grid;place-items:center;font-size:36px;border:1px solid rgba(87,240,167,.3);background:rgba(87,240,167,.06);box-shadow:0 0 45px rgba(87,240,167,.08);transition:.25s}
+.recovery{display:grid;grid-template-columns:1.1fr .9fr;gap:15px}.terminal{padding:22px;min-height:350px;background:#03070c;font:11px/1.7 ui-monospace,SFMono-Regular,Menlo,monospace;overflow:hidden}.terminal p{margin:0 0 4px;color:#91a7bf}.terminal .cmd{color:var(--cyan)}.terminal .good{color:var(--green)}.terminal .bad{color:var(--red)}.timeline{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:18px}.step{padding:10px;text-align:center;border:1px solid var(--line);border-radius:9px;font-size:8px;color:#6e829a;transition:.25s}.step.on{border-color:rgba(87,240,167,.42);color:var(--green);background:rgba(87,240,167,.05)}
+.ledger{overflow:auto}.ledger table{width:100%;border-collapse:collapse;min-width:780px}.ledger th,.ledger td{text-align:left;padding:14px 17px;border-bottom:1px solid var(--line);font-size:10px}.ledger th{color:#71869f;font-size:8px;letter-spacing:.12em;text-transform:uppercase}.ledger td{color:#aabbd0}.ledger tr:hover td{background:rgba(72,230,255,.025)}
+.stack{display:flex;flex-wrap:wrap;gap:9px}.chip{padding:10px 13px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.018);font-size:10px;color:#aabbd0}
+.cta{padding:50px;text-align:center;position:relative;overflow:hidden}.cta:before{content:"";position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(72,230,255,.08),transparent 65%);left:50%;top:50%;transform:translate(-50%,-50%)}.cta>*{position:relative}.cta h2{font-size:clamp(36px,5vw,66px);letter-spacing:-.055em;margin:0}.cta p{max-width:660px;margin:18px auto;color:var(--muted);line-height:1.7}
+footer{padding:35px 0 45px;color:#63778f;font-size:10px;border-top:1px solid rgba(255,255,255,.05)}.foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.modal{position:fixed;inset:0;z-index:200;background:rgba(1,4,8,.76);backdrop-filter:blur(14px);display:none;align-items:center;justify-content:center;padding:20px}.modal.show{display:flex}.modalbox{width:min(850px,95vw);max-height:88vh;overflow:auto;padding:0}.modalhead{position:sticky;top:0;z-index:3;display:flex;justify-content:space-between;align-items:center;padding:16px 19px;border-bottom:1px solid var(--line);background:rgba(8,15,25,.96)}.modalbody{padding:22px}.stages{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}.stage{padding:12px 8px;border:1px solid var(--line);border-radius:10px;text-align:center;font-size:9px;color:#6f839b}.stage.active{border-color:rgba(72,230,255,.45);color:var(--cyan);background:rgba(72,230,255,.05)}.stage.done{border-color:rgba(87,240,167,.35);color:var(--green)}.finding{margin-top:18px;border:1px solid var(--line);border-radius:14px;padding:17px;background:rgba(255,255,255,.015)}.finding pre{white-space:pre-wrap;color:#9cb1c7;font:10px/1.6 ui-monospace,SFMono-Regular,Menlo,monospace;margin:0}.modalResult{display:none;margin-top:15px;padding:18px;border:1px solid rgba(87,240,167,.25);border-radius:14px;background:rgba(87,240,167,.04)}.modalResult.show{display:block}
+.toast{position:fixed;right:22px;bottom:22px;z-index:300;max-width:360px;padding:14px 16px;border-radius:13px;background:#0a1422;border:1px solid var(--line2);box-shadow:var(--shadow);font-size:11px;color:#c7d6e7;transform:translateY(30px);opacity:0;pointer-events:none;transition:.25s}.toast.show{transform:none;opacity:1}
+@media(max-width:980px){.navlinks{display:none}.factbar{grid-template-columns:repeat(2,1fr)}.soc{grid-template-columns:1fr}.leftpanel,.rightpanel{border:0}.scene{min-height:560px}.grid3{grid-template-columns:1fr 1fr}.repoFacts{grid-template-columns:repeat(3,1fr)}.agentsGrid{grid-template-columns:1fr 1fr}.mcpGrid,.approval,.recovery{grid-template-columns:1fr}.mcpViz{height:430px}}
+@media(max-width:650px){.hero{min-height:820px}.hero h1{font-size:58px}.hero p{font-size:15px}.factbar{grid-template-columns:1fr 1fr}.head{display:block}.head p{margin-top:18px}.grid3{grid-template-columns:1fr}.repoFacts{grid-template-columns:1fr 1fr}.agentsGrid{grid-template-columns:1fr}.mcpViz{height:390px}.tool{width:120px}.stages{grid-template-columns:1fr 1fr}.cta{padding:34px 20px}.navright .btn{display:none}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.001ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<nav class="nav"><div class="wrap navin">
+  <a class="brand" href="#top"><span class="logo"></span>SENTINELMESH</a>
+  <div class="navlinks"><a href="#demo">Demo</a><a href="#capabilities">Capabilities</a><a href="#architecture">Architecture</a><a href="#mcp">MCP</a><a href="#governance">Governance</a></div>
+  <div class="navright"><div class="livechip"><span class="pulse"></span>simulation ready</div><button class="btn" onclick="openDemo()">Launch Demo</button></div>
+</div></nav>
+
+<header class="hero" id="top">
+  <div class="hero3d"><div class="floor"></div><div class="core"></div><div class="ring r1"></div><div class="ring r2"></div><div class="ring r3"></div></div>
+  <div class="wrap heroContent">
+    <div class="eyebrow"><span class="pulse"></span>AI Security Operations · Investigation · Governed Response</div>
+    <h1>SentinelMesh<span>From raw telemetry to explainable response.</span></h1>
+    <p>A recruiter-friendly visualization of an AI-assisted SOC architecture: normalize security telemetry, run thousands of detections, correlate incidents, investigate with specialized agents, expose traceable MCP tools, and keep consequential response behind human approval.</p>
+    <div class="heroActions"><button class="btn primary" onclick="openDemo()">▶ Run Investigation Demo</button><a class="btn" href="#architecture">Explore Architecture ↓</a></div>
+    <div class="factbar">
+      <div class="fact"><b>84</b><small>documented security connectors</small></div>
+      <div class="fact"><b>6,991</b><small>detection rules on disk</small></div>
+      <div class="fact"><b>2,603</b><small>executable detections</small></div>
+      <div class="fact"><b>4</b><small>public agent roles</small></div>
+      <div class="fact"><b>18</b><small>MCP tools · 17 read-only</small></div>
+    </div>
+    <div class="disclaimer"><strong>Portfolio simulation:</strong> animated incident data and confidence scores on this page are simulated. Architecture and capability counts are aligned to the supplied AiSOC project.</div>
+  </div>
+</header>
+
+<section id="demo"><div class="wrap">
+  <div class="head"><div><div class="kicker">01 / Interactive SOC</div><h2>See an investigation unfold.</h2></div><p>Click incidents, inspect the entity graph, run an agent investigation, and preview a governed response. The interface is intentionally understandable to both technical reviewers and nontechnical recruiters.</p></div>
+  <div class="card demoShell">
+    <div class="chrome"><div class="traffic"><i></i><i></i><i></i></div><div class="chrometitle">sentinelmesh / investigation-console / simulated</div><div class="livechip"><span class="pulse"></span>events flowing</div></div>
+    <div class="soc">
+      <aside class="leftpanel">
+        <div class="label">Incident queue</div>
+        <div class="incident active" onclick="pickIncident(this,'Identity takeover chain',94)"><span class="badge high">HIGH</span><b>Identity takeover chain</b><small>Okta · AWS · endpoint telemetry</small></div>
+        <div class="incident" onclick="pickIncident(this,'Suspicious PowerShell',83)"><span class="badge high">HIGH</span><b>Suspicious PowerShell</b><small>Endpoint · process lineage</small></div>
+        <div class="incident" onclick="pickIncident(this,'Impossible travel',71)"><span class="badge med">MED</span><b>Impossible travel</b><small>Identity · geo anomaly</small></div>
+        <div class="incident" onclick="pickIncident(this,'Cloud key exposure',89)"><span class="badge high">HIGH</span><b>Cloud key exposure</b><small>AWS · Git · threat intel</small></div>
+        <div class="label" style="margin-top:22px">Signal sources</div>
+        <div class="feed" id="feed">
+          <div><em>14:32:08</em> OCSF event normalized</div><div><em>14:32:09</em> identity signal promoted</div><div><em>14:32:10</em> endpoint lineage correlated</div><div><em>14:32:11</em> threat intel context attached</div><div><em>14:32:12</em> entity graph expanded</div><div><em>14:32:13</em> case confidence updated</div>
+        </div>
+      </aside>
+      <main class="scene">
+        <canvas id="mesh"></canvas>
+        <div class="scenehud">
+          <div class="sceneTitle"><b id="incidentTitle">Identity takeover chain</b><span>entity correlation graph · simulated</span></div>
+          <div class="score"><b id="riskScore">94</b><small>SIMULATED RISK / 100</small></div>
+          <div class="entity e1">USER<br>alex.m</div><div class="entity e2">OKTA<br>SESSION</div><div class="entity e3">AWS<br>ROLE</div><div class="entity e4">INCIDENT<br>CORE</div><div class="entity e5">IP<br>185.220.x</div><div class="entity e6">ENDPOINT<br>FIN-27</div>
+        </div>
+      </main>
+      <aside class="rightpanel">
+        <div class="label">Agent orchestration</div>
+        <div class="agents">
+          <div class="agent"><span>Detect</span><span class="green">signal fused</span></div>
+          <div class="agent"><span>Triage</span><span class="green">route selected</span></div>
+          <div class="agent"><span>Hunt</span><span class="amber" id="huntState">ready</span></div>
+          <div class="agent"><span>Respond</span><span class="muted" id="respondState">gated</span></div>
+        </div>
+        <div class="label" style="margin-top:21px">Investigation state</div>
+        <div class="agent"><span>Correlated evidence</span><span>17 events</span></div>
+        <div class="agent"><span>Decision replay</span><span class="green">available</span></div>
+        <div class="agent"><span>Response mode</span><span class="amber">preview first</span></div>
+        <div class="progress"><span id="demoProgress"></span></div>
+        <div class="miniControls"><button class="btn primary" onclick="openDemo()">Investigate</button><button class="btn" onclick="injectSignal()">Inject signal</button><button class="btn" onclick="resetScene()">Reset</button></div>
+      </aside>
+    </div>
+  </div>
+</div></section>
+
+<section id="capabilities"><div class="wrap">
+  <div class="head"><div><div class="kicker">02 / Platform Capabilities</div><h2>Built like a real security operations platform.</h2></div><p>The architecture separates ingestion, detections, correlation, investigation, search, graph context, threat intelligence and governed response rather than collapsing everything into one LLM prompt.</p></div>
+  <div class="grid3">
+    <div class="card cap"><div class="num">01 / INGEST</div><h3>OCSF-normalized telemetry</h3><p>Go ingestion services accept connector and webhook data, apply pre-ingest filters, normalize events to OCSF and publish them onto the Kafka event spine.</p></div>
+    <div class="card cap"><div class="num">02 / DETECT</div><h3>Detection + correlation</h3><p>A Python fusion layer runs executable rules, promotion logic, correlation, confidence scoring and incident narratives before cases reach the agent layer.</p></div>
+    <div class="card cap"><div class="num">03 / INVESTIGATE</div><h3>Multi-agent investigation</h3><p>Detect, Triage, Hunt and Respond divide signal fusion, routing, threat hunting and response planning into explicit roles with recorded tool use.</p></div>
+    <div class="card cap"><div class="num">04 / EXPLAIN</div><h3>Investigation Ledger</h3><p>Prompt, response and tool I/O can be replayed or explained through MCP-facing ledger tools, making the investigation path reviewable instead of opaque.</p></div>
+    <div class="card cap"><div class="num">05 / GOVERN</div><h3>Human-gated response</h3><p>Response begins as a preview/dry run. Permission tier, separation-of-duties and approval checks gate consequential action execution.</p></div>
+    <div class="card cap"><div class="num">06 / ENRICH</div><h3>Threat intelligence context</h3><p>Dedicated services support CISA KEV, TAXII, MISP and OTX feeds, IOC enrichment and threat-actor attribution to add external context to investigations.</p></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="head"><div><div class="kicker">03 / Repository Reality</div><h2>Concrete scope, not vanity metrics.</h2></div><p>These numbers describe the supplied project’s repository-level capabilities. Browser-only numbers elsewhere on this page are explicitly marked simulated.</p></div>
+  <div class="repoFacts">
+    <div class="card repoFact"><b>84</b><span>click-and-connect data connectors</span></div>
+    <div class="card repoFact"><b>6,991</b><span>rules in the detection corpus</span></div>
+    <div class="card repoFact"><b>2,603</b><span>currently executable detections</span></div>
+    <div class="card repoFact"><b>4</b><span>public agents: Detect, Triage, Hunt, Respond</span></div>
+    <div class="card repoFact"><b>18</b><span>MCP tools; 17 read-only</span></div>
+    <div class="card repoFact"><b>7</b><span>core data/event stores with distinct roles</span></div>
+  </div>
+</div></section>
+
+<section id="architecture"><div class="wrap">
+  <div class="head"><div><div class="kicker">04 / System Architecture</div><h2>Telemetry → intelligence → controlled action.</h2></div><p>A distributed service map designed around specialized workloads: Next.js at the edge, FastAPI for control-plane APIs, Go for ingestion/enrichment, Python for fusion and agents, plus a multi-store security data plane.</p></div>
+  <div class="card archboard">
+    <div class="pipeline">
+      <div class="svc"><strong>Security Sources</strong><span>Splunk · Sentinel · Elastic · CrowdStrike · Okta · AWS · Kubernetes</span></div><div class="arrow">→</div>
+      <div class="svc"><strong>Go Ingest</strong><span>webhooks · OCSF normalization · filter rules · Kafka publish</span></div><div class="arrow">→</div>
+      <div class="svc"><strong>Fusion</strong><span>detections · promotion · correlation · confidence · narratives</span></div><div class="arrow">→</div>
+      <div class="svc"><strong>Agents</strong><span>Detect · Triage · Hunt · Respond · playbook engine</span></div><div class="arrow">→</div>
+      <div class="svc"><strong>Ledger + MCP</strong><span>decision replay · explanation · typed investigative tools</span></div><div class="arrow">→</div>
+      <div class="svc"><strong>Actions</strong><span>preview · blast radius · approval · verification</span></div>
+    </div>
+    <div class="stores">
+      <div class="store"><b>PostgreSQL</b>tenants · cases · RBAC · audit · compliance</div>
+      <div class="store"><b>ClickHouse</b>high-cardinality analytics · alert metrics</div>
+      <div class="store"><b>OpenSearch</b>IOC/report search · Sigma backend</div>
+      <div class="store"><b>Qdrant</b>vector RAG · semantic ATT&CK lookup</div>
+      <div class="store"><b>Neo4j</b>entities · attack paths · blast radius</div>
+      <div class="store"><b>Redis</b>cache · pub/sub · IOC bloom · tickets</div>
+      <div class="store"><b>Kafka</b>raw · fused · anomaly · action · graph streams</div>
+    </div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="head"><div><div class="kicker">05 / Agent System</div><h2>Four public roles. Clear boundaries.</h2></div><p>The public agent contract stays understandable even as specialized capabilities such as phishing, identity, cloud and insider analysis sit underneath Triage.</p></div>
+  <div class="agentsGrid">
+    <div class="card agentCard"><div class="agentIcon">D</div><h3>Detect</h3><p>Fuses raw signals, entity risk and native detections into higher-quality security context for downstream workflows.</p><small>SIGNAL FUSION</small></div>
+    <div class="card agentCard"><div class="agentIcon">T</div><h3>Triage</h3><p>Chooses the right analytical capability, prioritizes incidents and routes evidence into the most relevant investigation path.</p><small>CAPABILITY ROUTING</small></div>
+    <div class="card agentCard"><div class="agentIcon">H</div><h3>Hunt</h3><p>Supports Hunt-as-Code YAML and natural-language translation into ES|QL, KQL and SPL for structured threat hunting.</p><small>HUNT-AS-CODE</small></div>
+    <div class="card agentCard"><div class="agentIcon">R</div><h3>Respond</h3><p>Builds containment, eradication and recovery plans while keeping real action behind autonomy and approval thresholds.</p><small>GOVERNED RESPONSE</small></div>
+  </div>
+</div></section>
+
+<section id="mcp"><div class="wrap">
+  <div class="head"><div><div class="kicker">06 / MCP Boundary</div><h2>AI access, typed and traceable.</h2></div><p>The TypeScript MCP server exposes 18 tools. Seventeen are read-only; <span class="cyan">aisoc_run_investigation</span> is the exception because it starts agent work rather than simply reading state.</p></div>
+  <div class="mcpGrid">
+    <div class="card mcpViz">
+      <div class="hub"><b>MCP<br>SERVER</b></div>
+      <div class="tool t1"><b>aisoc_get_alert</b><span>alert context</span></div>
+      <div class="tool t2"><b>aisoc_run_investigation</b><span>starts agent run</span></div>
+      <div class="tool t3"><b>aisoc_replay_decision</b><span>prompt + tool replay</span></div>
+      <div class="tool t4"><b>aisoc_preview_action</b><span>dry-run response</span></div>
+    </div>
+    <div class="card mcpCopy">
+      <h3>Small tools beat unrestricted agency.</h3>
+      <p>Investigations are exposed through narrowly scoped capabilities rather than handing an AI model broad direct control. Replay/explain tools make decisions reviewable, while action preview keeps the MCP boundary safe for evaluation.</p>
+      <div class="log">
+        <div class="logline">→ <b>aisoc_list_alerts()</b> <span class="green">✓ 24 open</span></div>
+        <div class="logline">→ <b>aisoc_get_alert()</b> <span class="green">✓ context loaded</span></div>
+        <div class="logline">→ <b>aisoc_run_investigation()</b> <span class="amber">◷ agent run started</span></div>
+        <div class="logline">→ <b>aisoc_replay_decision()</b> <span class="green">✓ trace available</span></div>
+        <div class="logline">→ <b>aisoc_preview_action()</b> <span class="amber">◷ human review</span></div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<section id="governance"><div class="wrap">
+  <div class="head"><div><div class="kicker">07 / Human Governance</div><h2>AI recommends. Humans authorize.</h2></div><p>Preview the response, inspect blast radius and verification steps, then approve or reject. This demo intentionally does not imply that a browser click is connected to a real production action service.</p></div>
+  <div class="approval">
+    <div class="card approvalCard">
+      <div class="label">Simulated response recommendation</div><h3 style="font-size:24px;margin:0">Identity takeover containment</h3>
+      <div class="risknum" id="approvalScore">94</div><div class="muted" style="font-size:10px">SIMULATED RISK / 100</div>
+      <p class="muted" style="line-height:1.75;font-size:13px">Proposed plan: revoke suspicious sessions, temporarily contain the identity, block a malicious IP, verify business impact, then monitor for recurrence.</p>
+      <div class="actionRow"><button class="btn primary" onclick="approve()">✓ Approve simulated plan</button><button class="btn" onclick="moreEvidence()">+ Request evidence</button><button class="btn" onclick="reject()">Reject</button></div>
+    </div>
+    <div class="card resultCard"><div><div class="shield" id="shield">⌁</div><h3 id="decisionTitle">Awaiting human decision</h3><p id="decisionText" class="muted" style="max-width:390px;line-height:1.7">No action is executed by this website. The control demonstrates the approval UX used around consequential response.</p></div></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="head"><div><div class="kicker">08 / Failure Recovery</div><h2>Visualize an event-driven recovery path.</h2></div><p>The real architecture uses an event-streaming spine and persistent stores. This browser exercise demonstrates the expected recovery narrative without claiming the web page itself runs backend workers.</p></div>
+  <div class="recovery">
+    <div class="card terminal" id="terminal"><p class="cmd">$ sentinelmesh demo --simulate worker-failure</p><p>ready: choose “simulate failure” to begin</p></div>
+    <div class="card cap"><div class="num">RECOVERY DEMO</div><h3>Preserve → recover → replay → resume.</h3><p>A failed worker should not silently erase investigation context. The visual sequence highlights event preservation, worker recovery, replay and audit continuity.</p><div class="actionRow"><button class="btn primary" onclick="runRecovery()">⚡ Simulate failure</button></div><div class="timeline" id="timeline"><div class="step">EVENT</div><div class="step">PRESERVE</div><div class="step">RECOVER</div><div class="step">REPLAY</div><div class="step">RESUME</div><div class="step">AUDIT</div></div></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="head"><div><div class="kicker">09 / Investigation Ledger</div><h2>Every important step has a trace.</h2></div><p>A replayable timeline helps reviewers understand what evidence was consulted, what the agent concluded and what action was merely previewed versus authorized.</p></div>
+  <div class="card ledger"><table>
+    <thead><tr><th>Time</th><th>Event</th><th>Evidence</th><th>State</th></tr></thead>
+    <tbody>
+      <tr><td>14:32:08</td><td>alert.received</td><td>Impossible travel + endpoint signal</td><td>Recorded</td></tr>
+      <tr><td>14:32:10</td><td>aisoc_get_alert</td><td>Alert context loaded</td><td>Verified</td></tr>
+      <tr><td>14:32:11</td><td>hunt.query</td><td>17 correlated events</td><td>Verified</td></tr>
+      <tr><td>14:32:13</td><td>risk.assessment</td><td>Multi-source evidence</td><td>94 / 100 simulated</td></tr>
+      <tr><td>14:32:14</td><td>aisoc_preview_action</td><td>Dry-run response plan</td><td>Pending approval</td></tr>
+    </tbody>
+  </table></div>
+</div></section>
+
+<section id="stack"><div class="wrap">
+  <div class="head"><div><div class="kicker">10 / Engineering Stack</div><h2>Security engineering across the stack.</h2></div><p>Representative technologies present in the project architecture and supporting workflows.</p></div>
+  <div class="stack">
+    <span class="chip">Python</span><span class="chip">FastAPI</span><span class="chip">Go</span><span class="chip">TypeScript</span><span class="chip">Node.js</span><span class="chip">Next.js</span><span class="chip">LangGraph</span><span class="chip">MCP</span><span class="chip">Kafka</span><span class="chip">PostgreSQL</span><span class="chip">ClickHouse</span><span class="chip">OpenSearch</span><span class="chip">Qdrant</span><span class="chip">Neo4j</span><span class="chip">Redis</span><span class="chip">Docker</span><span class="chip">PyTest</span><span class="chip">REST APIs</span><span class="chip">WebSockets</span><span class="chip">OCSF</span>
+  </div>
+</div></section>
+
+<section><div class="wrap"><div class="card cta">
+  <div class="kicker">Recruiter summary</div><h2>A security platform, not just a chatbot.</h2>
+  <p>SentinelMesh demonstrates the architecture behind AI-assisted security operations: event ingestion, rule-based detection, correlation, graph context, specialized agents, typed MCP tools, replayable decisions and human-controlled response.</p>
+  <div class="heroActions"><button class="btn primary" onclick="openDemo()">Run the demo again</button><a class="btn" href="#top">Back to top ↑</a></div>
+</div></div></section>
+
+<footer><div class="wrap foot"><span>SentinelMesh · interactive portfolio visualization</span><span>Demo data is synthetic; project facts reflect the supplied AiSOC repository.</span></div></footer>
+
+<div class="modal" id="modal" onclick="if(event.target===this)closeDemo()">
+  <div class="card modalbox">
+    <div class="modalhead"><div><b>AI Investigation Demo</b><div class="muted" style="font-size:9px;margin-top:3px">simulated workflow · no production actions</div></div><button class="btn ghost" onclick="closeDemo()">✕</button></div>
+    <div class="modalbody">
+      <div class="stages"><div class="stage" id="s0">1. Normalize</div><div class="stage" id="s1">2. Correlate</div><div class="stage" id="s2">3. Hunt</div><div class="stage" id="s3">4. Explain</div><div class="stage" id="s4">5. Preview</div></div>
+      <div class="finding"><pre id="investigationLog">Ready.
+
+Incident: Identity takeover chain
+Signals: Okta session anomaly + AWS role activity + endpoint telemetry
+
+Press “Start investigation” to animate the workflow.</pre></div>
+      <div class="modalResult" id="modalResult"><b class="green">Investigation complete</b><p class="muted" style="font-size:12px;line-height:1.7">The simulated workflow correlates evidence, records the decision path and produces a response preview that still requires human approval.</p></div>
+      <div class="actionRow"><button class="btn primary" id="runBtn" onclick="runInvestigation()">▶ Start investigation</button><button class="btn" onclick="resetInvestigation()">Reset</button></div>
+    </div>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+
+function toast(msg){const t=$("#toast");t.textContent=msg;t.classList.add("show");clearTimeout(window.__toast);window.__toast=setTimeout(()=>t.classList.remove("show"),2600)}
+function pickIncident(el,name,risk){$$(".incident").forEach(x=>x.classList.remove("active"));el.cl
