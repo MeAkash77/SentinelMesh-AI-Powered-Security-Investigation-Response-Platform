@@ -2,7 +2,7 @@
 
 <img src="apps/web/public/logo-mark.svg" alt="AiSOC" width="120" />
 
-# AiSOC
+# SentinelMesh 
 
 **An open-source, self-hostable AI Security Operations Center.** It ingests your security telemetry, detects and correlates threats, investigates them with AI agents whose reasoning is fully auditable, and proposes responses a human approves.
 
@@ -53,8 +53,6 @@ make up
 
 
 <div align="center">
-
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f172a,50:1d4ed8,100:06b6d4&height=200&section=header&text=SentinelMesh&fontSize=64&fontColor=ffffff&animation=fadeIn&fontAlignY=38&desc=AI-Powered%20Security%20Investigation%20%26%20Response%20Platform&descAlignY=60&descSize=18" alt="SentinelMesh banner" />
 
 **Ingest security telemetry · correlate alerts · investigate with auditable AI agents · respond only with human approval**
 
